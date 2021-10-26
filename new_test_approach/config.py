@@ -93,10 +93,29 @@ class RestClient(ABC):
              allow_redirects: bool = False,
              verify: bool = False,
              headers: dict = None,
-             expected_status_codes: list = []
+             expected_status_codes: list = [],
+             json_dumps: bool = True
              ):
-        data = json.dumps(data) or data
+        if json_dumps:
+            data = json.dumps(data) or data
         response = self._session.post(url, data=data, headers=headers, allow_redirects=allow_redirects, verify=verify)
+
+        if not response.ok and response.status_code not in expected_status_codes:
+            raise Exception(f'{error_msg}. \n Response code: {response.status_code}, \n Response text: {response.text}')
+
+        return response
+
+    def get(self,
+            url: str,
+            error_msg: str,
+            data: dict = None,
+            allow_redirects: bool = False,
+            verify: bool = False,
+            headers: dict = None,
+            expected_status_codes: list = []
+            ):
+        data = json.dumps(data) or data
+        response = self._session.get(url, data=data, headers=headers, allow_redirects=allow_redirects, verify=verify)
 
         if not response.ok and response.status_code not in expected_status_codes:
             raise Exception(f'{error_msg}. \n Response code: {response.status_code}, \n Response text: {response.text}')

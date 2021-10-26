@@ -23,7 +23,7 @@ def fb_api():
 
 
 @pytest.fixture(scope='session')
-def setup(dev_cli_config):
+def setup(dev_cli):
     print(f"\nSetup")
     # dev_cli = dev_cli_config
     # dev_cli.create_database()
@@ -88,6 +88,18 @@ def pytest_addoption(parser):
                      default='20m')
 
 
+# @pytest.fixture(scope='session')
+# def dev_cli_args(request):
+#     branch = request.config.getoption('--branch')
+#     commit = request.config.getoption('--commit')
+#     database = request.congig.getoption('--database')
+#     engine_type = request.congig.getoption('--engine_type')
+#     engine_name = request.config.getoption('--engine_name')
+#     region = request.config.getoption('--region')
+#     scale = request.config.getoption('--scale')
+#     warmup_method = request.config.getoption('--warmup_method')
+#     env = request.config.getoption('--env')
+#     autostop = request.config.getoption('--autostop')
 
 
 

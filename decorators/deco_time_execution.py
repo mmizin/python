@@ -1,5 +1,6 @@
 import functools
 import time
+from email.contentmanager import maintype
 
 
 def timer_decorator(func):
@@ -23,3 +24,23 @@ def some_function(start, end):
 
 
 some_function(1, 1000000)
+
+
+def clock(func):
+    def clocked(*args, **kwargs):
+        t0 = time.perf_counter()
+        result = func(*args, **kwargs)
+        elapsed = time.perf_counter() - t0
+        name = func.__name__
+        arg_str = ', '.join(repr(arg) for arg in args)
+        print(f'[{elapsed:0.8f}s] {name}({arg_str}) -> {result!r}')
+        return result
+    return clocked
+
+@clock
+def snooze(seconds):
+    time.sleep(seconds)
+    
+
+if __name__ == '__main__':
+    snooze(seconds=0.123)

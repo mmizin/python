@@ -8,7 +8,7 @@ The maximum number of consecutive 1s is 3.
 
 
 class Solution:
-    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+    def findMaxConsecutiveOnes(self, nums: list[int]) -> int:
         max_count = 0
         current = 0
         

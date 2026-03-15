@@ -12,5 +12,18 @@ for i in range(n):
     if not swapped:
         break
 
+# print(l1)
+# print(sorted(l1))
+
+swapped = False
+for i in range(len(l1), -1, -1):
+    for j in range(i-1):
+        if l1[j] > l1[j+1]:
+            l1[j], l1[j+1] = l1[j+1], l1[j]
+            swapped = True
+    
+    if not swapped:
+        break
+
 print(l1)
 print(sorted(l1))

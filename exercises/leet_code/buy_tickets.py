@@ -38,10 +38,9 @@ After the person at the front has bought a ticket, the queue becomes [1,1,1,4] a
 Continuing this process for 3 seconds, the queue becomes [4] at 4 seconds.
 Continuing this process for 4 seconds, the queue becomes [] at 8 seconds. The kth person has bought all their tickets, so return 8.
 """
-from collections import Counter
 
 
-def timeRequiredToBuy(tickets: list[int], k: int) -> int:
+def time_required_to_buy(tickets: list[int], k: int) -> int:
     target = tickets[k]
     seconds = 0
     
@@ -56,9 +55,9 @@ def timeRequiredToBuy(tickets: list[int], k: int) -> int:
 
 tickets = [2,3,2]
 k = 2
-print(timeRequiredToBuy(tickets, k))
+print(time_required_to_buy(tickets, k))
 
 tickets = [8, 1, 1, 1]
 k = 2
-print(timeRequiredToBuy(tickets, k))
+print(time_required_to_buy(tickets, k))
 

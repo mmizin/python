@@ -13,5 +13,28 @@ def is_palindrome(text):
     
     print(f"The word '{text}' is a palindrome")
 
-is_palindrome("A man a plan a canal Panama")
-is_palindrome("Python")
+# is_palindrome("A man a plan a canal Panama")
+# is_palindrome("Python")
+
+print("---------------------------")
+
+t = " A man a plan a canal Panama "
+
+def is_palindrome(text):
+    text = ''.join(text.strip().split()).lower()
+
+    return text == text[::-1]
+
+print(is_palindrome(t))
+
+def is_palindrome(text):
+    text = ''.join(text.strip().split()).lower()
+
+    for i in range(len(text) // 2):
+        if text[i] != text[-(i + 1)]:
+            return False
+
+    return True
+
+
+print(is_palindrome(t))

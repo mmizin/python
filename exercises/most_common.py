@@ -11,3 +11,7 @@ print([k[0] for k in counter.most_common(2)])
 counter = Counter(l1)
 sorted_counter = sorted(counter.items(), key=lambda item: item[1])
 print([x[0] for x in sorted_counter[-2:]])
+
+most_comon = counter.most_common()
+most_comon.sort(key=lambda item: item[1])
+print(most_comon)
